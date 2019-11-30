@@ -1,13 +1,17 @@
 package com.example.myapplication;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -16,6 +20,9 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Map;
+import java.util.Random;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     public static int NOTIFICATION_ID = 1;
@@ -23,14 +30,30 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        generateNotification(remoteMessage.getNotification().getBody(), remoteMessage.getNotification().getTitle());
+     generateNotification(remoteMessage.getNotification().getBody(), remoteMessage.getNotification().getTitle(), remoteMessage.getData());
     }
 
-    private void generateNotification(String body, String title) {
+    private void generateNotification(String body, String title, Map<String, String> data) {
         //Log.d("body", body);
         //Log.d("title", title);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        String content = data.get("content");
+        String contentType= data.get("contentType");
+
+        Intent intent;
+
+        if(contentType.equals("video") )
+        {
+            intent = new Intent(this, video.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("CONTENT", content);
+        }
+        else
+        {
+            intent = new Intent(this, message.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("CONTENT", content);
+        }
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 

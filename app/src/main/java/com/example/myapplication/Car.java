@@ -60,18 +60,15 @@ public class Car extends AppCompatActivity {
         checkPermission();
 
         editText = findViewById(R.id.editText);
-        videoView = findViewById(R.id.videoView);
-        play = findViewById(R.id.play);
+//        videoView = findViewById(R.id.videoView);
+//        play = findViewById(R.id.play);
 
-
-
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playVideo();
-            }
-        });
-
+//        play.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                playVideo();
+//            }
+//        });
 
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
@@ -160,14 +157,17 @@ public class Car extends AppCompatActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://54.159.121.22/api/v1/driver/listen/" +plateNumber +"/" + editText.getText().toString();
-
+        Log.d("URL", url);
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        editText.setText("Response is: "+ response.substring(0,500));
+                        //editText.setText("Response is: "+ response.toString());
+                        editText.setText("");
+                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -206,40 +206,40 @@ public class Car extends AppCompatActivity {
         }
     }
 
-    private void playVideo() {
-        //videoView.setVideoPath(VIDEO_SAMPLE);
-        //videoView.start();
-        videoView.setVideoURI(Uri.parse(VIDEO_SAMPLE));
-        videoView.requestFocus();
-
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-            }
-        });
-
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                videoView.start();
-                mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
-                    @Override
-                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-                        MediaController mediaController = new MediaController(Car.this);
-                        videoView.setMediaController(mediaController);
-                        mediaController.setAnchorView(videoView);
-                    }
-                });
-            }
-        });
-
-        videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
-                return false;
-            }
-        });
-    }
+//    private void playVideo() {
+//        //videoView.setVideoPath(VIDEO_SAMPLE);
+//        //videoView.start();
+//        videoView.setVideoURI(Uri.parse(VIDEO_SAMPLE));
+//        videoView.requestFocus();
+//
+//        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mediaPlayer) {
+//            }
+//        });
+//
+//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mediaPlayer) {
+//                videoView.start();
+//                mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+//                    @Override
+//                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+//                        MediaController mediaController = new MediaController(Car.this);
+//                        videoView.setMediaController(mediaController);
+//                        mediaController.setAnchorView(videoView);
+//                    }
+//                });
+//            }
+//        });
+//
+//        videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+//            @Override
+//            public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+//                return false;
+//            }
+//        });
+//    }
 
 
 

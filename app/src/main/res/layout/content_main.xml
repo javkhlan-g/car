@@ -8,19 +8,6 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/name_view"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_vertical"
-        android:text="NAME"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/name"
         android:layout_width="0dp"
@@ -31,22 +18,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/name_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@+id/deviceid"
         app:layout_constraintStart_toStartOf="@+id/deviceid" />
-
-    <TextView
-        android:id="@+id/position_view"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="Position"
-        app:layout_constraintBottom_toTopOf="@+id/plate_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_view" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -56,6 +30,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/position_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@+id/deviceid"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="@+id/deviceid">
@@ -88,8 +63,7 @@
         android:id="@+id/plate_view"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
         android:text="Plate #"
@@ -107,20 +81,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/plate_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@+id/deviceid"
         app:layout_constraintStart_toStartOf="@+id/deviceid" />
-
-    <TextView
-        android:id="@+id/deviced_view"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="Device ID"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plate_view" />
 
     <EditText
         android:id="@+id/deviceid"
@@ -134,8 +97,47 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/deviced_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/deviced_view"
         app:layout_constraintStart_toEndOf="@+id/deviced_view" />
+
+    <TextView
+        android:id="@+id/name_view"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center_vertical"
+        android:text="NAME"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/position_view"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="Position"
+        app:layout_constraintBottom_toTopOf="@+id/plate_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_view" />
+
+    <TextView
+        android:id="@+id/deviced_view"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:text="Device ID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plate_view" />
 
     <Button
         android:id="@+id/create"

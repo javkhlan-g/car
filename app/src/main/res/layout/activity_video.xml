@@ -7,9 +7,19 @@
     tools:context=".video">
 
     <VideoView
-        android:id="@+id/videoView2"
-        android:layout_width="411dp"
-        android:layout_height="399dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="140dp" />
+        android:id="@+id/driverVideo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        <!--android:layout_width="411dp"
+        android:layout_height="399dp-->"
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

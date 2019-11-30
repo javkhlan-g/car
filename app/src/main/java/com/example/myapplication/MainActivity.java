@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     RadioButton carFront, carMiddle, carBack;
     String carIndex = "1";
-    String video = "http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4";
+    //String video = "http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4";
+    String video = "";
     TelephonyManager telephonyManager;
     String deviceId;
 
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 carIndex = "1";
-                video = "http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4";
+                video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
             }
         });
         carMiddle.setOnClickListener(new View.OnClickListener(){
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     public void navigate() {
         Intent intent = new Intent(this, Car.class);
         intent.putExtra("PLATE_NUMBER", plateNumber.getText().toString());
-
         startActivity(intent);
     }
 
